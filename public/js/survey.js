@@ -143,16 +143,33 @@ function validateCurrentPart() {
 
     const requiredInputs = currentPartEl.querySelectorAll('input[required]');
     const radioGroups = new Set();
+    const checkboxGroups = new Set();
 
-    // 收集必填的单选组
+    // 收集必填的单选组和复选框组
     requiredInputs.forEach(input => {
         if (input.type === 'radio') {
             radioGroups.add(input.name);
+        } else if (input.type === 'checkbox') {
+            checkboxGroups.add(input.name);
         }
     });
 
     // 检查单选组是否已选
     for (const groupName of radioGroups) {
+        const checked = currentPartEl.querySelector(`input[name="${groupName}"]:checked`);
+        if (!checked) {
+            showToast('请完成当前页面的所有必填项');
+            // 找到未填写的问题并滚动到那里
+            const firstUnchecked = currentPartEl.querySelector(`input[name="${groupName}"]`);
+            if (firstUnchecked) {
+                firstUnchecked.closest('.question')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return false;
+        }
+    }
+
+    // 检查复选框组是否已选
+    for (const groupName of checkboxGroups) {
         const checked = currentPartEl.querySelector(`input[name="${groupName}"]:checked`);
         if (!checked) {
             showToast('请完成当前页面的所有必填项');
