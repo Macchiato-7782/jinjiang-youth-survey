@@ -464,7 +464,7 @@
             const code4 = R + F + C + M;      // 4维代码
 
             // 获取人格数据（先找5维，找不到就用4维基础版）
-            const personality = personalityData[code5] || personalityData[code4];
+            const personality = personalityData[code5] || personalityData[code4] || { name: "分析出错", subtitle: "请刷新页面重试", color: "#999", desc: "人格类型未找到，请重新提交问卷。", advantages: [], advice: "请返回首页重新填写。", match: { code: "N/A", name: "无" } };
 
             // 显示结果
             displayResult(code5, personality);
