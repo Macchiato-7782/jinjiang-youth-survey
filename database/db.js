@@ -43,31 +43,36 @@ function initTables() {
             income TEXT,
             housing TEXT,
 
-            -- 恋爱观 (4题)
+            -- 恋爱观 (6题)
             relationship_status TEXT,
             meet_channel TEXT,
             mate_priority TEXT,
             long_distance TEXT,
+            partner_priority TEXT,
+            jinjiang_marriage_custom_impact TEXT,
 
-            -- 婚姻观 (5题)
+            -- 婚姻观 (6题)
             marriage_necessity TEXT,
             ideal_marriage_age TEXT,
             cohabitation TEXT,
             marriage_customs TEXT,
             marriage_factor TEXT,
+            marriage_risk_view TEXT,
 
-            -- 生育观 (5题)
+            -- 生育观 (6题)
             fertility_willingness TEXT,
             children_num TEXT,
             gender_preference TEXT,
             fertility_concern TEXT,
             three_child_policy TEXT,
+            jinjiang_clan_impact TEXT,
 
-            -- 家庭与未来 (5题)
+            -- 家庭与未来 (6题)
             live_with_parents TEXT,
             housework TEXT,
             career_family TEXT,
             factors TEXT,
+            independence_need TEXT,
             jinjiang_feature TEXT,
             policy_suggestion TEXT,
             other_suggestions TEXT
@@ -97,11 +102,11 @@ const dbOperations = {
                 response_id, ip_address, user_agent, completion_time,
                 jinjiang_type,
                 gender, age, education, occupation, income, housing,
-                relationship_status, meet_channel, mate_priority, long_distance,
-                marriage_necessity, ideal_marriage_age, cohabitation, marriage_customs, marriage_factor,
-                fertility_willingness, children_num, gender_preference, fertility_concern, three_child_policy,
-                live_with_parents, housework, career_family, factors, jinjiang_feature, policy_suggestion, other_suggestions
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                relationship_status, meet_channel, mate_priority, long_distance, partner_priority, jinjiang_marriage_custom_impact,
+                marriage_necessity, ideal_marriage_age, cohabitation, marriage_customs, marriage_factor, marriage_risk_view,
+                fertility_willingness, children_num, gender_preference, fertility_concern, three_child_policy, jinjiang_clan_impact,
+                live_with_parents, housework, career_family, factors, independence_need, jinjiang_feature, policy_suggestion, other_suggestions
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
         const params = [
@@ -120,20 +125,25 @@ const dbOperations = {
             data.meet_channel,
             data.mate_priority,
             data.long_distance,
+            data.partner_priority,
+            data.jinjiang_marriage_custom_impact,
             data.marriage_necessity,
             data.ideal_marriage_age,
             data.cohabitation,
             data.marriage_customs,
             data.marriage_factor,
+            data.marriage_risk_view,
             data.fertility_willingness,
             data.children_num,
             data.gender_preference,
             data.fertility_concern,
             data.three_child_policy,
+            data.jinjiang_clan_impact,
             data.live_with_parents,
             data.housework,
             data.career_family,
             data.factors,
+            data.independence_need,
             data.jinjiang_feature,
             data.policy_suggestion,
             data.other_suggestions
