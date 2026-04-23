@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晋江青年婚育观念调查 - 后台管理</title>
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>调查系统后台</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#overview" class="nav-item active" data-section="overview">
+                    <span class="nav-icon">📊</span>
+                    <span>数据概览</span>
+                </a>
+                <a href="#demographics" class="nav-item" data-section="demographics">
+                    <span class="nav-icon">👥</span>
+                    <span>人口特征</span>
+                </a>
+                <a href="#marriage" class="nav-item" data-section="marriage">
+                    <span class="nav-icon">💕</span>
+                    <span>婚恋观念</span>
+                </a>
+                <a href="#fertility" class="nav-item" data-section="fertility">
+                    <span class="nav-icon">👶</span>
+                    <span>生育观念</span>
+                </a>
+                <a href="#family" class="nav-item" data-section="family">
+                    <span class="nav-icon">🏠</span>
+                    <span>家庭观念</span>
+                </a>
+                <a href="#factors" class="nav-item" data-section="factors">
+                    <span class="nav-icon">📈</span>
+                    <span>影响因素</span>
+                </a>
+                <a href="#cross" class="nav-item" data-section="cross">
+                    <span class="nav-icon">🔗</span>
+                    <span>交叉分析</span>
+                </a>
+                <a href="#responses" class="nav-item" data-section="responses">
+                    <span class="nav-icon">📝</span>
+                    <span>原始数据</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 顶部栏 -->
+            <header class="top-bar">
+                <h1>晋江青年婚育观念调查数据分析</h1>
+                <div class="actions">
+                    <button class="btn btn-secondary" onclick="refreshData()">🔄 刷新数据</button>
+                    <button class="btn btn-primary" onclick="exportData()">📥 导出数据</button>
+                </div>
+            </header>
+
+            <!-- 数据概览 -->
+            <section id="overview" class="section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="totalResponses">-</div>
+                            <div class="stat-label">总回答数</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="todayResponses">-</div>
+                            <div class="stat-label">今日回答</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="avgTime">3-5</div>
+                            <div class="stat-label">平均用时(分钟)</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <div class="stat-value">23</div>
+                            <div class="stat-label">题目数量</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-row">
+                    <div class="chart-card">
+                        <h3>回答趋势（最近30天）</h3>
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 人口特征 -->
+            <section id="demographics" class="section">
+                <div class="chart-grid">
+                    <div class="chart-card">
+                        <h3>性别分布</h3>
+                        <canvas id="genderChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>年龄分布</h3>
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>学历分布</h3>
+                        <canvas id="educationChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>户籍分布</h3>
+                        <canvas id="hukouChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>职业分布</h3>
+                        <canvas id="occupationChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>收入分布</h3>
+                        <canvas id="incomeChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 婚恋观念 -->
+            <section id="marriage" class="section">
+                <div class="chart-grid">
+                    <div class="chart-card">
+                        <h3>结婚是必选项吗？</h3>
+                        <canvas id="marriageNecessityChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>理想结婚年龄</h3>
+                        <canvas id="idealMarriageAgeChart"></canvas>
+                    </div>
+                    <div class="chart-card wide">
+                        <h3>择偶标准（多选）</h3>
+                        <canvas id="mateCriteriaChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>对未婚同居的态度</h3>
+                        <canvas id="cohabitationChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>婚嫁习俗的影响</h3>
+                        <canvas id="marriageCustomsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 生育观念 -->
+            <section id="fertility" class="section">
+                <div class="chart-grid">
+                    <div class="chart-card">
+                        <h3>生育意愿</h3>
+                        <canvas id="fertilityWillingnessChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>希望生育子女数</h3>
+                        <canvas id="childrenNumChart"></canvas>
+                    </div>
+                    <div class="chart-card wide">
+                        <h3>生育顾虑（多选）</h3>
+                        <canvas id="fertilityConcernChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>对三孩政策的态度</h3>
+                        <canvas id="threeChildPolicyChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 家庭观念 -->
+            <section id="family" class="section">
+                <div class="chart-grid">
+                    <div class="chart-card">
+                        <h3>婚后是否与父母同住</h3>
+                        <canvas id="liveWithParentsChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>家务劳动分配</h3>
+                        <canvas id="houseworkChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>事业与家庭的平衡</h3>
+                        <canvas id="careerFamilyChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 影响因素 -->
+            <section id="factors" class="section">
+                <div class="chart-grid">
+                    <div class="chart-card wide">
+                        <h3>影响婚育决策的主要因素（多选）</h3>
+                        <canvas id="factorsChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>晋江地域特色的影响</h3>
+                        <canvas id="jinjiangFeatureChart"></canvas>
+                    </div>
+                    <div class="chart-card wide">
+                        <h3>政策建议（多选）</h3>
+                        <canvas id="policySuggestionChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 交叉分析 -->
+            <section id="cross" class="section">
+                <div class="cross-analysis-controls">
+                    <h3>自定义交叉分析</h3>
+                    <div class="select-row">
+                        <select id="crossField1">
+                            <option value="">选择分析维度1</option>
+                            <option value="gender">性别</option>
+                            <option value="age">年龄</option>
+                            <option value="education">学历</option>
+                            <option value="hukou">户籍</option>
+                            <option value="income">收入</option>
+                            <option value="marital">婚姻状况</option>
+                        </select>
+                        <span>vs</span>
+                        <select id="crossField2">
+                            <option value="">选择分析维度2</option>
+                            <option value="marriage_necessity">结婚必要性</option>
+                            <option value="fertility_willingness">生育意愿</option>
+                            <option value="children_num">子女数量</option>
+                            <option value="three_child_policy">三孩政策态度</option>
+                            <option value="career_family">事业家庭平衡</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="runCrossAnalysis()">分析</button>
+                    </div>
+                </div>
+                <div class="chart-card" id="crossResultContainer" style="display:none;">
+                    <h3>交叉分析结果</h3>
+                    <div id="crossTable"></div>
+                </div>
+            </section>
+
+            <!-- 原始数据 -->
+            <section id="responses" class="section">
+                <div class="data-table-container">
+                    <h3>原始回答数据</h3>
+                    <table class="data-table" id="responsesTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>提交时间</th>
+                                <th>性别</th>
+                                <th>年龄</th>
+                                <th>学历</th>
+                                <th>户籍</th>
+                                <th>职业</th>
+                                <th>收入</th>
+                                <th>婚姻状况</th>
+                                <th>生育意愿</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="responsesTableBody">
+                            <!-- 动态填充 -->
+                        </tbody>
+                    </table>
+                    <div class="pagination" id="pagination">
+                        <!-- 动态填充 -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 详情弹窗 -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>回答详情</h3>
+                <button class="close-btn" onclick="closeDetailModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="detailContent">
+                <!-- 动态填充 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

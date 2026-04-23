@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>婚育观念研究 — 晋江青年</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="nav">
+        <div class="nav-content">
+            <span class="logo">婚育研究</span>
+            <a href="/admin" class="nav-link" target="_blank">数据后台</a>
+        </div>
+    </nav>
+
+    <!-- 首屏 Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">新时代县域青年研究</p>
+            <h1 class="hero-title">
+                <span class="line">爱与承诺</span>
+                <span class="line">在时代中生长</span>
+            </h1>
+            <p class="hero-subtitle">
+                了解晋江青年群体的婚育观念，<br>
+                探索当代年轻人的爱与选择。
+            </p>
+            <div class="hero-cta">
+                <a href="#survey" class="btn-primary">开始问卷</a>
+                <span class="time-badge">约 6-8 分钟</span>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- 引言部分 -->
+    <section class="quote-section">
+        <div class="quote-content">
+            <blockquote>
+                "爱是恒久忍耐，又有恩慈；<br>
+                爱是不嫉妒，不自夸，不张狂。"
+            </blockquote>
+            <p class="quote-source">— 探索当代青年的婚恋价值观</p>
+        </div>
+    </section>
+
+    <!-- 问卷主体 -->
+    <section id="survey" class="survey-section">
+        <div class="survey-header">
+            <h2>研究问卷</h2>
+            <p>您的每一份回答，都在帮助我们理解这个时代的爱与家庭</p>
+        </div>
+
+        <form class="survey-form" id="surveyForm">
+            <!-- 进度指示 -->
+            <div class="progress-indicator">
+                <div class="progress-step active" data-step="1">
+                    <span class="step-number">01</span>
+                    <span class="step-label">关于你</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <span class="step-number">02</span>
+                    <span class="step-label">恋爱观</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <span class="step-number">03</span>
+                    <span class="step-label">婚姻观</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">
+                    <span class="step-number">04</span>
+                    <span class="step-label">生育观</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="5">
+                    <span class="step-number">05</span>
+                    <span class="step-label">家庭与未来</span>
+                </div>
+            </div>
+
+            <!-- Part 1: 基本信息 -->
+            <div class="form-part active" data-part="1">
+                <div class="part-header">
+                    <span class="part-number">01</span>
+                    <h3>关于你</h3>
+                    <p class="part-quote">"认识自己是所有智慧的开端"</p>
+                </div>
+
+                <div class="question-group">
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">1</span>
+                            您的性别
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-row">
+                            <label class="option-card">
+                                <input type="radio" name="gender" value="男" required>
+                                <span class="option-text">男</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="gender" value="女" required>
+                                <span class="option-text">女</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">2</span>
+                            您的年龄
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card">
+                                <input type="radio" name="age" value="18-22岁" required>
+                                <span class="option-text">18-22岁</span>
+                                <span class="option-hint">大学时光</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="age" value="23-26岁" required>
+                                <span class="option-text">23-26岁</span>
+                                <span class="option-hint">初入社会</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="age" value="27-30岁" required>
+                                <span class="option-text">27-30岁</span>
+                                <span class="option-hint">而立前夕</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="age" value="31-35岁" required>
+                                <span class="option-text">31-35岁</span>
+                                <span class="option-hint">事业上升</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">3</span>
+                            最高学历
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card">
+                                <input type="radio" name="education" value="高中及以下" required>
+                                <span class="option-text">高中及以下</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="education" value="大专" required>
+                                <span class="option-text">大专</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="education" value="本科" required>
+                                <span class="option-text">本科</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="education" value="硕士及以上" required>
+                                <span class="option-text">硕士及以上</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">4</span>
+                            您的职业类型
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-3">
+                            <label class="option-card">
+                                <input type="radio" name="occupation" value="企业职员" required>
+                                <span class="option-text">企业职员</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="occupation" value="公务员/事业单位" required>
+                                <span class="option-text">公务员/事业单位</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="occupation" value="个体经营/私营业主" required>
+                                <span class="option-text">个体经营/私营业主</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="occupation" value="产业工人" required>
+                                <span class="option-text">产业工人</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="occupation" value="服务业从业者" required>
+                                <span class="option-text">服务业从业者</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="occupation" value="自由职业/待业/其他" required>
+                                <span class="option-text">自由职业/待业/其他</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">5</span>
+                            您的月均收入（税前）
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-5">
+                            <label class="option-card">
+                                <input type="radio" name="income" value="4000元以下" required>
+                                <span class="option-text">4000元以下</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="income" value="4000-6000元" required>
+                                <span class="option-text">4000-6000元</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="income" value="6000-10000元" required>
+                                <span class="option-text">6000-10000元</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="income" value="10000-15000元" required>
+                                <span class="option-text">10000-15000元</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="income" value="15000元以上" required>
+                                <span class="option-text">15000元以上</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">6</span>
+                            您的居住情况
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-2">
+                            <label class="option-card">
+                                <input type="radio" name="housing" value="自有住房" required>
+                                <span class="option-text">自有住房</span>
+                                <span class="option-hint">已购房</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="housing" value="租房独居" required>
+                                <span class="option-text">租房独居</span>
+                                <span class="option-hint">独立生活</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="housing" value="与父母同住" required>
+                                <span class="option-text">与父母同住</span>
+                                <span class="option-hint">原生家庭</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="housing" value="单位宿舍/其他" required>
+                                <span class="option-text">单位宿舍/其他</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-nav">
+                    <button type="button" class="btn-next" onclick="goToPart(2)">
+                        继续
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Part 2: 恋爱观 -->
+            <div class="form-part" data-part="2">
+                <div class="part-header">
+                    <span class="part-number">02</span>
+                    <h3>恋爱观</h3>
+                    <p class="part-quote">"爱情是两个相似的天性在无限感觉中和谐的交融"</p>
+                </div>
+
+                <div class="question-group">
+                    <div class="question">
+                        <label class="question-label large">
+                            <span class="q-num">7</span>
+                            您目前的感情状况
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-list">
+                            <label class="option-item">
+                                <input type="radio" name="relationship_status" value="单身，无恋爱经历" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>单身，无恋爱经历</strong>
+                                    <span>正在等待缘分降临</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="relationship_status" value="单身，有过恋爱经历" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>单身，有过恋爱经历</strong>
+                                    <span>从过往中成长，期待新的开始</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="relationship_status" value="恋爱中，未婚" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>恋爱中，未婚</strong>
+                                    <span>正在享受甜蜜的两人世界</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="relationship_status" value="已婚" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>已婚</strong>
+                                    <span>已步入婚姻殿堂</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="relationship_status" value="离异/丧偶" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>离异/丧偶</strong>
+                                    <span>重新开始人生旅程</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">8</span>
+                            您通常通过什么渠道认识异性？（最多选2项）
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-3">
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="meet_channel" value="亲友介绍">
+                                <span class="check-icon"></span>
+                                <span class="option-text">亲友介绍</span>
+                                <span class="option-hint">熟人背书，知根知底</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="meet_channel" value="同学/同事">
+                                <span class="check-icon"></span>
+                                <span class="option-text">同学/同事</span>
+                                <span class="option-hint">日久生情</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="meet_channel" value="社交活动">
+                                <span class="check-icon"></span>
+                                <span class="option-text">社交活动/兴趣圈子</span>
+                                <span class="option-hint">志同道合</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="meet_channel" value="线上交友平台">
+                                <span class="check-icon"></span>
+                                <span class="option-text">线上交友平台</span>
+                                <span class="option-hint">扩大交际圈</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="meet_channel" value="相亲">
+                                <span class="check-icon"></span>
+                                <span class="option-text">相亲/婚介</span>
+                                <span class="option-hint">目的明确</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="meet_channel" value="随缘">
+                                <span class="check-icon"></span>
+                                <span class="option-text">随缘/其他</span>
+                                <span class="option-hint">相信命运安排</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">9</span>
+                            您在择偶时最看重什么？（最多选3项，按重要性排序）
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="mate_priority" value="性格三观相合">
+                                <span class="check-icon"></span>
+                                <span class="option-text">性格三观相合</span>
+                                <span class="option-hint">精神层面的契合</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="mate_priority" value="外貌气质">
+                                <span class="check-icon"></span>
+                                <span class="option-text">外貌气质</span>
+                                <span class="option-hint">第一印象与眼缘</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="mate_priority" value="经济收入">
+                                <span class="check-icon"></span>
+                                <span class="option-text">经济收入/职业前景</span>
+                                <span class="option-hint">物质基础保障</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="mate_priority" value="学历背景">
+                                <span class="check-icon"></span>
+                                <span class="option-text">学历背景</span>
+                                <span class="option-hint">教育水平相近</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="mate_priority" value="家庭背景">
+                                <span class="check-icon"></span>
+                                <span class="option-text">家庭背景</span>
+                                <span class="option-hint">门当户对</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="mate_priority" value="地域户籍">
+                                <span class="check-icon"></span>
+                                <span class="option-text">地域/户籍</span>
+                                <span class="option-hint">相近的成长环境</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="mate_priority" value="年龄差距">
+                                <span class="check-icon"></span>
+                                <span class="option-text">年龄差距小</span>
+                                <span class="option-hint">相近的人生阶段</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="mate_priority" value="生活习惯">
+                                <span class="check-icon"></span>
+                                <span class="option-text">生活习惯</span>
+                                <span class="option-hint">日常相处的和谐</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label large">
+                            <span class="q-num">10</span>
+                            您对异地恋的态度是？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card">
+                                <input type="radio" name="long_distance" value="完全不接受" required>
+                                <span class="option-text">完全不接受</span>
+                                <span class="option-hint">距离产生隔阂</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="long_distance" value="短期可以" required>
+                                <span class="option-text">短期可以</span>
+                                <span class="option-hint">过渡期能接受</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="long_distance" value="只要感情好就能克服" required>
+                                <span class="option-text">只要感情好就能克服</span>
+                                <span class="option-hint">真爱无敌</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="long_distance" value="视情况而定" required>
+                                <span class="option-text">视情况而定</span>
+                                <span class="option-hint">具体问题具体分析</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-nav">
+                    <button type="button" class="btn-prev" onclick="goToPart(1)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        返回
+                    </button>
+                    <button type="button" class="btn-next" onclick="goToPart(3)">
+                        继续
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Part 3: 婚姻观 -->
+            <div class="form-part" data-part="3">
+                <div class="part-header">
+                    <span class="part-number">03</span>
+                    <h3>婚姻观</h3>
+                    <p class="part-quote">"婚姻不仅是两个人的结合，更是两个家庭的联结"</p>
+                </div>
+
+                <div class="question-group">
+                    <div class="question">
+                        <label class="question-label large">
+                            <span class="q-num">11</span>
+                            您认为结婚是人生的必选项吗？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-list large">
+                            <label class="option-item">
+                                <input type="radio" name="marriage_necessity" value="是，人生必须结婚" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>是，人生必须结婚</strong>
+                                    <span>婚姻是人生的重要组成部分，是成年的标志</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="marriage_necessity" value="最好是，但不强求" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>最好是，但不强求</strong>
+                                    <span>期待婚姻，但不会为了结婚而结婚</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="marriage_necessity" value="可有可无" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>可有可无</strong>
+                                    <span>婚姻只是生活方式的一种选择</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="marriage_necessity" value="不是必须的" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>不是必须的</strong>
+                                    <span>单身也可以过得很幸福</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">12</span>
+                            您理想的结婚年龄是？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-5">
+                            <label class="option-card">
+                                <input type="radio" name="ideal_marriage_age" value="25岁之前" required>
+                                <span class="option-text">25岁之前</span>
+                                <span class="option-hint">早婚早育</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="ideal_marriage_age" value="25-27岁" required>
+                                <span class="option-text">25-27岁</span>
+                                <span class="option-hint">适婚年龄</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="ideal_marriage_age" value="28-30岁" required>
+                                <span class="option-text">28-30岁</span>
+                                <span class="option-hint">事业有成</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="ideal_marriage_age" value="30岁以后" required>
+                                <span class="option-text">30岁以后</span>
+                                <span class="option-hint">成熟稳定</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="ideal_marriage_age" value="不打算结婚" required>
+                                <span class="option-text">不打算结婚</span>
+                                <span class="option-hint">独身主义</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label large">
+                            <span class="q-num">13</span>
+                            您对婚前同居的态度是？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card">
+                                <input type="radio" name="cohabitation" value="完全接受" required>
+                                <span class="option-text">完全接受</span>
+                                <span class="option-hint">婚前试婚有必要</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="cohabitation" value="可以理解" required>
+                                <span class="option-text">可以理解</span>
+                                <span class="option-hint">他人选择尊重</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="cohabitation" value="不太接受" required>
+                                <span class="option-text">不太接受</span>
+                                <span class="option-hint">婚前应保持距离</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="cohabitation" value="完全不接受" required>
+                                <span class="option-text">完全不接受</span>
+                                <span class="option-hint">坚守传统观念</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label large">
+                            <span class="q-num">14</span>
+                            您认为晋江本地的婚嫁习俗（彩礼、嫁妆、婚礼排场）对年轻人结婚的影响如何？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="slider-options">
+                            <label class="slider-option">
+                                <input type="radio" name="marriage_customs" value="压力很大" required>
+                                <div class="option-content">
+                                    <span class="option-title">压力很大</span>
+                                    <span class="option-desc">彩礼过高，经济负担沉重，让人望而却步</span>
+                                </div>
+                            </label>
+                            <label class="slider-option">
+                                <input type="radio" name="marriage_customs" value="有一定压力" required>
+                                <div class="option-content">
+                                    <span class="option-title">有一定压力</span>
+                                    <span class="option-desc">需要准备，但可以承受，适当简化即可</span>
+                                </div>
+                            </label>
+                            <label class="slider-option">
+                                <input type="radio" name="marriage_customs" value="影响不大" required>
+                                <div class="option-content">
+                                    <span class="option-title">影响不大</span>
+                                    <span class="option-desc">因人而异，可以协商，不必过于在意</span>
+                                </div>
+                            </label>
+                            <label class="slider-option">
+                                <input type="radio" name="marriage_customs" value="没有压力" required>
+                                <div class="option-content">
+                                    <span class="option-title">没有压力</span>
+                                    <span class="option-desc">家庭条件支持，或双方观念开明</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">15</span>
+                            您认为维系婚姻最重要的因素是什么？（最多选3项）
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-3">
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="marriage_factor" value="爱情基础">
+                                <span class="check-icon"></span>
+                                <span class="option-text">爱情基础</span>
+                                <span class="option-hint">感情是婚姻的基石</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="marriage_factor" value="经济保障">
+                                <span class="check-icon"></span>
+                                <span class="option-text">经济保障</span>
+                                <span class="option-hint">贫贱夫妻百事哀</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="marriage_factor" value="性格包容">
+                                <span class="check-icon"></span>
+                                <span class="option-text">性格包容</span>
+                                <span class="option-hint">互相理解与忍让</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="marriage_factor" value="共同目标">
+                                <span class="check-icon"></span>
+                                <span class="option-text">共同目标</span>
+                                <span class="option-hint">朝着同一方向努力</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="marriage_factor" value="家庭支持">
+                                <span class="check-icon"></span>
+                                <span class="option-text">家庭支持</span>
+                                <span class="option-hint">双方父母的认可</span>
+                            </label>
+                            <label class="option-card selectable">
+                                <input type="checkbox" name="marriage_factor" value="责任担当">
+                                <span class="check-icon"></span>
+                                <span class="option-text">责任担当</span>
+                                <span class="option-hint">对家庭的责任感</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-nav">
+                    <button type="button" class="btn-prev" onclick="goToPart(2)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        返回
+                    </button>
+                    <button type="button" class="btn-next" onclick="goToPart(4)">
+                        继续
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Part 4: 生育观 -->
+            <div class="form-part" data-part="4">
+                <div class="part-header">
+                    <span class="part-number">04</span>
+                    <h3>生育观</h3>
+                    <p class="part-quote">"每一个孩子都是上天赐予的礼物，承载着希望与未来"</p>
+                </div>
+
+                <div class="question-group">
+                    <div class="question">
+                        <label class="question-label large">
+                            <span class="q-num">16</span>
+                            您是否有生育意愿？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-list large">
+                            <label class="option-item">
+                                <input type="radio" name="fertility_willingness" value="有明确意愿" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>有明确意愿</strong>
+                                    <span>期待成为父母，想要孩子，正在规划中</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="fertility_willingness" value="比较想要" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>比较想要</strong>
+                                    <span>想要孩子，但还在犹豫现实条件</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="fertility_willingness" value="不确定" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>不确定</strong>
+                                    <span>顺其自然，看缘分和条件</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="fertility_willingness" value="不太想要" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>不太想要</strong>
+                                    <span>目前没有想法，但不排除改变</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="fertility_willingness" value="完全不想要" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>完全不想要</strong>
+                                    <span>确定选择丁克生活方式</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">17</span>
+                            如果生育，您希望生育几个孩子？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-row center large-cards">
+                            <label class="option-card family-card">
+                                <input type="radio" name="children_num" value="0个" required>
+                                <span class="family-icon">零</span>
+                                <span class="option-text">不生育</span>
+                                <span class="option-hint">丁克家庭</span>
+                            </label>
+                            <label class="option-card family-card">
+                                <input type="radio" name="children_num" value="1个" required>
+                                <span class="family-icon">一</span>
+                                <span class="option-text">1个孩子</span>
+                                <span class="option-hint">独生子女</span>
+                            </label>
+                            <label class="option-card family-card">
+                                <input type="radio" name="children_num" value="2个" required>
+                                <span class="family-icon">二</span>
+                                <span class="option-text">2个孩子</span>
+                                <span class="option-hint">儿女双全</span>
+                            </label>
+                            <label class="option-card family-card">
+                                <input type="radio" name="children_num" value="3个及以上" required>
+                                <span class="family-icon">三+</span>
+                                <span class="option-text">3个及以上</span>
+                                <span class="option-hint">多子女家庭</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">18</span>
+                            您对孩子的性别有偏好吗？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card">
+                                <input type="radio" name="gender_preference" value="希望男孩" required>
+                                <span class="option-text">希望男孩</span>
+                                <span class="option-hint">传统观念</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="gender_preference" value="希望女孩" required>
+                                <span class="option-text">希望女孩</span>
+                                <span class="option-hint">贴心小棉袄</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="gender_preference" value="儿女双全" required>
+                                <span class="option-text">儿女双全</span>
+                                <span class="option-hint">一男一女</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="gender_preference" value="无所谓" required>
+                                <span class="option-text">无所谓</span>
+                                <span class="option-hint">男女都一样</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">19</span>
+                            如果您犹豫或不想生育，主要原因是什么？（最多选3项）
+                        </label>
+                        <div class="options-grid cols-3">
+                            <label class="option-card concern selectable">
+                                <input type="checkbox" name="fertility_concern" value="经济压力">
+                                <span class="check-icon"></span>
+                                <span class="option-text">经济压力</span>
+                                <span class="option-hint">养育成本太高</span>
+                            </label>
+                            <label class="option-card concern selectable">
+                                <input type="checkbox" name="fertility_concern" value="工作影响">
+                                <span class="check-icon"></span>
+                                <span class="option-text">工作影响</span>
+                                <span class="option-hint">担心职业发展受阻</span>
+                            </label>
+                            <label class="option-card concern selectable">
+                                <input type="checkbox" name="fertility_concern" value="个人自由">
+                                <span class="check-icon"></span>
+                                <span class="option-text">个人自由</span>
+                                <span class="option-hint">不想失去自我空间</span>
+                            </label>
+                            <label class="option-card concern selectable">
+                                <input type="checkbox" name="fertility_concern" value="教育焦虑">
+                                <span class="check-icon"></span>
+                                <span class="option-text">教育焦虑</span>
+                                <span class="option-hint">担心教育竞争激烈</span>
+                            </label>
+                            <label class="option-card concern selectable">
+                                <input type="checkbox" name="fertility_concern" value="住房条件">
+                                <span class="check-icon"></span>
+                                <span class="option-text">住房条件</span>
+                                <span class="option-hint">居住空间不足</span>
+                            </label>
+                            <label class="option-card concern selectable">
+                                <input type="checkbox" name="fertility_concern" value="尚未遇到合适伴侣">
+                                <span class="check-icon"></span>
+                                <span class="option-text">尚未遇到合适伴侣</span>
+                                <span class="option-hint">还没有结婚对象</span>
+                            </label>
+                            <label class="option-card concern selectable">
+                                <input type="checkbox" name="fertility_concern" value="对育儿缺乏信心">
+                                <span class="check-icon"></span>
+                                <span class="option-text">对育儿缺乏信心</span>
+                                <span class="option-hint">担心自己做不好父母</span>
+                            </label>
+                            <label class="option-card concern selectable">
+                                <input type="checkbox" name="fertility_concern" value="社会环境">
+                                <span class="check-icon"></span>
+                                <span class="option-text">社会环境</span>
+                                <span class="option-hint">对未来不乐观</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">20</span>
+                            您对三孩政策的态度是？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card">
+                                <input type="radio" name="three_child_policy" value="非常支持" required>
+                                <span class="option-text">非常支持</span>
+                                <span class="option-hint">积极响应国家政策</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="three_child_policy" value="可以理解" required>
+                                <span class="option-text">可以理解</span>
+                                <span class="option-hint">但要看实际情况</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="three_child_policy" value="无所谓" required>
+                                <span class="option-text">无所谓</span>
+                                <span class="option-hint">政策对我影响不大</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="three_child_policy" value="不看好" required>
+                                <span class="option-text">不看好</span>
+                                <span class="option-hint">配套支持不足</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-nav">
+                    <button type="button" class="btn-prev" onclick="goToPart(3)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        返回
+                    </button>
+                    <button type="button" class="btn-next" onclick="goToPart(5)">
+                        继续
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Part 5: 家庭与未来 -->
+            <div class="form-part" data-part="5">
+                <div class="part-header">
+                    <span class="part-number">05</span>
+                    <h3>家庭与未来</h3>
+                    <p class="part-quote">"家，是心之所向，是爱的港湾，是无论走多远都想回去的地方"</p>
+                </div>
+
+                <div class="question-group">
+                    <div class="question">
+                        <label class="question-label large">
+                            <span class="q-num">21</span>
+                            您认为婚后是否应该与父母同住？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-list">
+                            <label class="option-item">
+                                <input type="radio" name="live_with_parents" value="应该长期同住" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>应该长期同住</strong>
+                                    <span>方便照顾父母，传承孝道，也能帮忙带娃</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="live_with_parents" value="短期过渡可以" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>短期过渡可以</strong>
+                                    <span>新婚或育儿初期可以，长期需要独立空间</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="live_with_parents" value="分开住但住得近" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>分开住但住得近</strong>
+                                    <span>保持一碗汤的距离，既独立又方便照应</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="live_with_parents" value="完全分开" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>完全分开</strong>
+                                    <span>保持独立，有自己的生活空间，互不干涉</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">22</span>
+                            您认为家务劳动应该如何分配？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card">
+                                <input type="radio" name="housework" value="传统分工" required>
+                                <span class="option-text">传统分工</span>
+                                <span class="option-hint">男主外女主内</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="housework" value="共同承担" required>
+                                <span class="option-text">共同承担</span>
+                                <span class="option-hint">夫妻平等分担</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="housework" value="按收入分工" required>
+                                <span class="option-text">按收入分工</span>
+                                <span class="option-hint">收入低的多承担</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="housework" value="按能力/时间分工" required>
+                                <span class="option-text">按能力/时间分工</span>
+                                <span class="option-hint">灵活安排</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label large">
+                            <span class="q-num">23</span>
+                            您认为事业与家庭哪个更重要？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="balance-scale">
+                            <label class="balance-option career">
+                                <input type="radio" name="career_family" value="事业优先" required>
+                                <span class="balance-text">事业优先</span>
+                                <span class="balance-desc">个人成就与发展</span>
+                            </label>
+                            <label class="balance-option">
+                                <input type="radio" name="career_family" value="尽量平衡" required>
+                                <span class="balance-text">尽量平衡</span>
+                                <span class="balance-desc">两者兼顾</span>
+                            </label>
+                            <label class="balance-option">
+                                <input type="radio" name="career_family" value="分阶段侧重" required>
+                                <span class="balance-text">分阶段侧重</span>
+                                <span class="balance-desc">年轻拼事业，中年顾家庭</span>
+                            </label>
+                            <label class="balance-option family">
+                                <input type="radio" name="career_family" value="家庭优先" required>
+                                <span class="balance-text">家庭优先</span>
+                                <span class="balance-desc">家庭幸福是根本</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">24</span>
+                            影响您婚育决策的最主要因素是什么？（最多选3项）
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card factor selectable">
+                                <input type="checkbox" name="factors" value="住房成本">
+                                <span class="check-icon"></span>
+                                <span class="option-text">住房成本</span>
+                                <span class="option-hint">房价压力</span>
+                            </label>
+                            <label class="option-card factor selectable">
+                                <input type="checkbox" name="factors" value="收入水平">
+                                <span class="check-icon"></span>
+                                <span class="option-text">收入水平</span>
+                                <span class="option-hint">经济基础</span>
+                            </label>
+                            <label class="option-card factor selectable">
+                                <input type="checkbox" name="factors" value="教育成本">
+                                <span class="check-icon"></span>
+                                <span class="option-text">教育成本</span>
+                                <span class="option-hint">子女教育投入</span>
+                            </label>
+                            <label class="option-card factor selectable">
+                                <input type="checkbox" name="factors" value="工作稳定性">
+                                <span class="check-icon"></span>
+                                <span class="option-text">工作稳定性</span>
+                                <span class="option-hint">职业安全感</span>
+                            </label>
+                            <label class="option-card factor selectable">
+                                <input type="checkbox" name="factors" value="父母的意见">
+                                <span class="check-icon"></span>
+                                <span class="option-text">父母的意见</span>
+                                <span class="option-hint">长辈期望</span>
+                            </label>
+                            <label class="option-card factor selectable">
+                                <input type="checkbox" name="factors" value="同辈影响">
+                                <span class="check-icon"></span>
+                                <span class="option-text">同辈影响</span>
+                                <span class="option-hint">朋友圈子</span>
+                            </label>
+                            <label class="option-card factor selectable">
+                                <input type="checkbox" name="factors" value="社会观念">
+                                <span class="check-icon"></span>
+                                <span class="option-text">社会观念</span>
+                                <span class="option-hint">传统与现代</span>
+                            </label>
+                            <label class="option-card factor selectable">
+                                <input type="checkbox" name="factors" value="个人发展">
+                                <span class="check-icon"></span>
+                                <span class="option-text">个人发展</span>
+                                <span class="option-hint">自我实现</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">25</span>
+                            作为晋江青年，您认为晋江的地域特色（民营经济发达、侨乡文化、传统宗族观念等）对婚育观念的影响是？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-4">
+                            <label class="option-card">
+                                <input type="radio" name="jinjiang_feature" value="明显促进" required>
+                                <span class="option-text">明显促进</span>
+                                <span class="option-hint">传统观念较强，重视婚育</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="jinjiang_feature" value="有一定促进" required>
+                                <span class="option-text">有一定促进</span>
+                                <span class="option-hint">家庭观念相对传统</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="jinjiang_feature" value="影响不大" required>
+                                <span class="option-text">影响不大</span>
+                                <span class="option-hint">与其他地方差不多</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="jinjiang_feature" value="有一定抑制" required>
+                                <span class="option-text">有一定抑制</span>
+                                <span class="option-hint">经济压力大，婚嫁成本高</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">26</span>
+                            您认为政府应该优先采取哪些措施来提升青年婚育意愿？（最多选3项）
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-grid cols-3">
+                            <label class="option-card policy selectable">
+                                <input type="checkbox" name="policy_suggestion" value="住房支持">
+                                <span class="check-icon"></span>
+                                <span class="option-text">住房支持</span>
+                                <span class="option-hint">购房补贴/公租房</span>
+                            </label>
+                            <label class="option-card policy selectable">
+                                <input type="checkbox" name="policy_suggestion" value="育儿补贴">
+                                <span class="check-icon"></span>
+                                <span class="option-text">育儿补贴</span>
+                                <span class="option-hint">生育奖励/奶粉金</span>
+                            </label>
+                            <label class="option-card policy selectable">
+                                <input type="checkbox" name="policy_suggestion" value="教育减负">
+                                <span class="check-icon"></span>
+                                <span class="option-text">教育减负</span>
+                                <span class="option-hint">普惠托育/义务教育</span>
+                            </label>
+                            <label class="option-card policy selectable">
+                                <input type="checkbox" name="policy_suggestion" value="就业保障">
+                                <span class="check-icon"></span>
+                                <span class="option-text">就业保障</span>
+                                <span class="option-hint">反歧视/延长产假</span>
+                            </label>
+                            <label class="option-card policy selectable">
+                                <input type="checkbox" name="policy_suggestion" value="婚恋服务">
+                                <span class="check-icon"></span>
+                                <span class="option-text">婚恋服务</span>
+                                <span class="option-hint">交友平台/联谊活动</span>
+                            </label>
+                            <label class="option-card policy selectable">
+                                <input type="checkbox" name="policy_suggestion" value="婚俗改革">
+                                <span class="check-icon"></span>
+                                <span class="option-text">婚俗改革</span>
+                                <span class="option-hint">减轻彩礼负担</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label class="question-label">
+                            <span class="q-num">27</span>
+                            您对优化晋江青年婚育环境的其他建议
+                        </label>
+                        <div class="textarea-wrapper">
+                            <textarea name="other_suggestions" rows="5" placeholder="在这里分享您的想法和建议...
+
+每一份声音都值得被听见，
+您的建议可能帮助到更多年轻人找到幸福。"></textarea>
+                            <span class="textarea-hint">选填，您的建议对我们非常重要</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-nav final">
+                    <button type="button" class="btn-prev" onclick="goToPart(4)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        返回
+                    </button>
+                    <button type="submit" class="btn-submit">
+                        <span>提交问卷</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- 结束语 -->
+    <section class="footer-quote">
+        <blockquote>
+            "愿每个人都能在爱中找到归属，<br>
+            在家庭中收获幸福。"
+        </blockquote>
+        <p class="footer-thanks">感谢您对本次研究的支持</p>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>新时代县域青年婚育观念研究 — 晋江青年群体调查</p>
+            <p class="footer-links">
+                <a href="/admin" target="_blank">数据后台</a>
+                <span>·</span>
+                <span>数据严格保密，仅用于学术研究</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- 成功弹窗 -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-animation">
+                <svg class="checkmark" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <h2>感谢您的参与</h2>
+            <p>您的回答已成功提交</p>
+            <p class="modal-subtitle">每一份真诚的回答，都在为理解这个时代的爱与家庭贡献力量。</p>
+            <button class="btn-close" onclick="closeModal()">完成</button>
+        </div>
+    </div>
+
+    <script src="js/survey.js"></script>
+</body>
+</html>
