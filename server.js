@@ -204,6 +204,14 @@ app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin', 'index.html'));
 });
 
-module.exports = app;
+// 启动服务器
+app.listen(PORT, '0.0.0.0', () => {
+    console.log('='.repeat(60));
+    console.log('晋江青年婚育观念调查系统已启动');
+    console.log('='.repeat(60));
+    console.log(`问卷访问地址: http://0.0.0.0:${PORT}`);
+    console.log(`后台管理地址: http://0.0.0.0:${PORT}/admin`);
+    console.log('='.repeat(60));
+});
 
 module.exports = app;
