@@ -104,6 +104,16 @@
 
             <!-- 人口特征 -->
             <section id="demographics" class="section">
+                <div class="filter-bar">
+                    <label>筛选范围：</label>
+                    <select id="jinjiangFilter" onchange="applyJinjiangFilter()">
+                        <option value="all">全部数据</option>
+                        <option value="local">時江本地户籍</option>
+                        <option value="working">在時江工作/学习</option>
+                        <option value="other">非時江地区</option>
+                    </select>
+                    <span class="filter-count" id="filterCount"></span>
+                </div>
                 <div class="chart-grid">
                     <div class="chart-card">
                         <h3>晋江身份分布</h3>

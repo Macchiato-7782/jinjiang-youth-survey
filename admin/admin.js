@@ -4,8 +4,11 @@ Chart.defaults.color = '#666';
 
 // 全局数据存储
 let allStatistics = {};
+let allRawData = []; // 存储原始回答数据
+let filteredData = []; // 筛选后的数据
 let currentPage = 1;
 let totalPages = 1;
+let currentJinjiangFilter = 'all'; // 当前晋江筛选条件
 
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
@@ -64,13 +67,125 @@ async function loadAllData() {
             renderTrendChart(trendData.data);
         }
 
-        // 加载原始数据
+        // 加载所有原始数据（用于筛选）
+        await loadAllRawData();
+
+        // 加载原始数据表格
         loadResponses();
 
     } catch (error) {
         console.error('加载数据失败:', error);
         alert('加载数据失败，请稍后重试');
     }
+}
+
+// 加载所有原始数据
+async function loadAllRawData() {
+    try {
+        const res = await fetch('/api/responses?limit=10000'); // 获取所有数据
+        const data = await res.json();
+        if (data.success) {
+            allRawData = data.data;
+            filteredData = [...allRawData];
+            updateFilterCount();
+        }
+    } catch (error) {
+        console.error('加载原始数据失败:', error);
+    }
+}
+
+// 应用晋江筛选
+function applyJinjiangFilter() {
+    const filter = document.getElementById('jinjiangFilter').value;
+    currentJinjiangFilter = filter;
+
+    if (filter === 'all') {
+        filteredData = [...allRawData];
+    } else {
+        filteredData = allRawData.filter(r => r.jinjiang_type === filter);
+    }
+
+    // 重新计算统计数据
+    recalculateStatistics();
+    updateFilterCount();
+}
+
+// 更新筛选计数
+function updateFilterCount() {
+    const countEl = document.getElementById('filterCount');
+    if (countEl) {
+        const total = allRawData.length;
+        const filtered = filteredData.length;
+        if (currentJinjiangFilter === 'all') {
+            countEl.textContent = `显示全部 ${total} 条数据`;
+        } else {
+            const labelMap = {
+                'local': '晋江本地户籍',
+                'working': '在晋江工作/学习',
+                'other': '非晋江地区'
+            };
+            countEl.textContent = `${labelMap[currentJinjiangFilter]}：${filtered} 条 / 总计 ${total} 条`;
+        }
+    }
+}
+
+// 重新计算统计数据（基于筛选后的数据）
+function recalculateStatistics() {
+    const stats = {};
+
+    // 定义需要统计的字段
+    const fields = [
+        'gender', 'age', 'education', 'occupation', 'income', 'housing',
+        'relationship_status', 'meet_channel', 'mate_priority', 'long_distance',
+        'marriage_necessity', 'ideal_marriage_age', 'cohabitation', 'marriage_customs', 'marriage_factor',
+        'fertility_willingness', 'children_num', 'gender_preference', 'fertility_concern', 'three_child_policy',
+        'live_with_parents', 'housework', 'career_family', 'factors', 'jinjiang_feature', 'policy_suggestion',
+        'partner_priority', 'jinjiang_marriage_custom_impact', 'marriage_risk_view',
+        'jinjiang_clan_impact', 'independence_need'
+    ];
+
+    fields.forEach(field => {
+        const distribution = {};
+        filteredData.forEach(r => {
+            const value = r[field];
+            if (value) {
+                // 处理多选字段（逗号分隔）
+                if (typeof value === 'string' && value.includes(',')) {
+                    value.split(',').forEach(v => {
+                        const trimmed = v.trim();
+                        if (trimmed) {
+                            distribution[trimmed] = (distribution[trimmed] || 0) + 1;
+                        }
+                    });
+                } else {
+                    distribution[value] = (distribution[value] || 0) + 1;
+                }
+            }
+        });
+
+        // 转换为数组格式
+        stats[field] = Object.entries(distribution)
+            .map(([value, count]) => ({ value, count }))
+            .sort((a, b) => b.count - a.count);
+    });
+
+    // 晋江身份分布
+    const jinjiangDist = {};
+    filteredData.forEach(r => {
+        const type = r.jinjiang_type || '未填写';
+        const label = {
+            'local': '晋江本地',
+            'working': '在晋江工作/学习',
+            'other': '其他地区'
+        }[type] || type;
+        jinjiangDist[label] = (jinjiangDist[label] || 0) + 1;
+    });
+    stats.jinjiang_type = Object.entries(jinjiangDist)
+        .map(([value, count]) => ({ value, count }))
+        .sort((a, b) => b.count - a.count);
+
+    allStatistics = stats;
+    renderAllCharts();
 }
 
 // 更新概览数据
@@ -286,21 +401,22 @@ function renderHorizontalBarChart(canvasId, data, title) {
     });
 }
 
-// 加载原始数据
-async function loadResponses(page = 1) {
-    try {
-        const res = await fetch(`/api/responses?page=${page}&limit=20`);
-        const data = await res.json();
+// 加载原始数据表格（使用筛选后的数据）
+function loadResponsesTable(page = 1) {
+    const pageSize = 20;
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    const pageData = filteredData.slice(start, end);
 
-        if (data.success) {
-            renderResponsesTable(data.data);
-            currentPage = page;
-            totalPages = Math.ceil(data.total / data.limit);
-            renderPagination();
-        }
-    } catch (error) {
-        console.error('加载原始数据失败:', error);
-    }
+    renderResponsesTable(pageData);
+    currentPage = page;
+    totalPages = Math.ceil(filteredData.length / pageSize);
+    renderPagination();
+}
+
+// 加载原始数据（兼容旧调用）
+async function loadResponses(page = 1) {
+    loadResponsesTable(page);
 }
 
 // 渲染原始数据表格
@@ -368,6 +484,7 @@ function showDetailModal(response) {
         id: 'ID',
         response_id: '响应ID',
         submit_time: '提交时间',
+        jinjiang_type: '晋江身份',
         gender: '性别',
         age: '年龄',
         education: '学历',
@@ -378,20 +495,25 @@ function showDetailModal(response) {
         meet_channel: '认识渠道',
         mate_priority: '择偶标准',
         long_distance: '异地恋态度',
+        partner_priority: '择偶最看重',
+        jinjiang_marriage_custom_impact: '晋江婚嫁习俗影响',
         marriage_necessity: '结婚必要性',
         ideal_marriage_age: '理想结婚年龄',
         cohabitation: '同居态度',
         marriage_customs: '婚嫁习俗影响',
         marriage_factor: '维系婚姻因素',
+        marriage_risk_view: '婚姻风险看法',
         fertility_willingness: '生育意愿',
         children_num: '子女数量',
         gender_preference: '性别偏好',
         fertility_concern: '生育顾虑',
         three_child_policy: '三孩政策态度',
+        jinjiang_clan_impact: '晋江宗族文化影响',
         live_with_parents: '与父母同住',
         housework: '家务分配',
         career_family: '事业家庭平衡',
         factors: '影响因素',
+        independence_need: '独立空间需求',
         jinjiang_feature: '晋江地域特色影响',
         policy_suggestion: '政策建议',
         other_suggestions: '其他建议'

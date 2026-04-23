@@ -179,6 +179,42 @@ body {
     margin-top: 4px;
 }
 
+/* 筛选栏 */
+.filter-bar {
+    background: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.filter-bar label {
+    font-weight: 500;
+    color: #555;
+}
+
+.filter-bar select {
+    padding: 10px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    min-width: 160px;
+}
+
+.filter-bar select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.filter-count {
+    margin-left: auto;
+    color: #667eea;
+    font-weight: 500;
+}
+
 /* 图表区域 */
 .chart-row {
     margin-bottom: 20px;
