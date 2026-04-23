@@ -1,7 +1,7 @@
 // 问卷开始时间
 let startTime = Date.now();
 let currentPart = 0;
-const totalParts = 5;
+const totalParts = 6;
 
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
