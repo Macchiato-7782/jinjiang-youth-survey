@@ -1,6 +1,6 @@
 // 问卷开始时间
 let startTime = Date.now();
-let currentPart = 1;
+let currentPart = 0;
 const totalParts = 5;
 
 // 初始化
@@ -101,7 +101,7 @@ function initMultiSelect() {
 
 // 切换到指定部分
 function goToPart(part) {
-    if (part < 1 || part > totalParts) return;
+    if (part < 0 || part > totalParts) return;
 
     // 验证当前部分是否已填写
     if (part > currentPart && !validateCurrentPart()) {
