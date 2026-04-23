@@ -61,7 +61,12 @@
         <form class="survey-form" id="surveyForm">
             <!-- 进度指示 -->
             <div class="progress-indicator">
-                <div class="progress-step active" data-step="1">
+                <div class="progress-step active" data-step="0">
+                    <span class="step-number">00</span>
+                    <span class="step-label">身份确认</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="1">
                     <span class="step-number">01</span>
                     <span class="step-label">关于你</span>
                 </div>
@@ -87,8 +92,63 @@
                 </div>
             </div>
 
-            <!-- Part 1: 基本信息 -->
-            <div class="form-part active" data-part="1">
+            
+            <!-- Part 0: 晋江身份确认 -->
+            <div class="form-part active" data-part="0">
+                <div class="part-header">
+                    <span class="part-number">00</span>
+                    <h3>身份确认</h3>
+                    <p class="part-quote">"了解你的背景，让研究更精准"</p>
+                </div>
+
+                <div class="question-group">
+                    <div class="question">
+                        <label class="question-label large">
+                            <span class="q-num">0</span>
+                            您与晋江的关系是？
+                            <span class="required">*</span>
+                        </label>
+                        <div class="options-list large">
+                            <label class="option-item">
+                                <input type="radio" name="jinjiang_type" value="local" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>晋江本地户籍，长期居住</strong>
+                                    <span>土生土长的晋江人</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="jinjiang_type" value="working" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>在晋江工作/学习</strong>
+                                    <span>新晋江人，正在这座城市打拼</span>
+                                </span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="jinjiang_type" value="other" required>
+                                <span class="radio-circle"></span>
+                                <span class="item-text">
+                                    <strong>非晋江，只是参与调查</strong>
+                                    <span>来自其他地区，提供对比参考</span>
+                                </span>
+                            </label>
+                        </div㸾
+                    </div>
+                </div>
+
+                <div class="part-nav">
+                    <button type="button" class="btn-next" onclick="goToPart(1)">
+                        继续
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+<!-- Part 1: 基本信息 -->
+            <div class="form-part" data-part="1">
                 <div class="part-header">
                     <span class="part-number">01</span>
                     <h3>关于你</h3>
@@ -198,6 +258,11 @@
                                 <span class="option-text">服务业从业者</span>
                             </label>
                             <label class="option-card">
+                                <input type="radio" name="occupation" value="学生" required>
+                                <span class="option-text">学生</span>
+                                <span class="option-hint">在读学生</span>
+                            </label>
+                            <label class="option-card">
                                 <input type="radio" name="occupation" value="自由职业/待业/其他" required>
                                 <span class="option-text">自由职业/待业/其他</span>
                             </label>
@@ -265,6 +330,12 @@
                 </div>
 
                 <div class="part-nav">
+                    <button type="button" class="btn-prev" onclick="goToPart(0)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        返回
+                    </button>
                     <button type="button" class="btn-next" onclick="goToPart(2)">
                         继续
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

@@ -1,0 +1,987 @@
+/* 结果页样式 - 白色高级感 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #ffffff;
+    color: #1d1d1f;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.result-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* 人格代码展示 */
+.code-display {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.code-letter {
+    font-size: 48px;
+    font-weight: 600;
+    color: #c0c0c0;
+    transition: all 0.3s ease;
+    animation: flipIn 0.6s ease forwards;
+}
+
+@keyframes flipIn {
+    0% {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+
+/* 几何画像容器 */
+.portrait-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 40px;
+    position: relative;
+}
+
+.geometric-portrait {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 人格名称 */
+.personality-name {
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+    animation: fadeInUp 0.8s ease 0.5s both;
+}
+
+.personality-subtitle {
+    font-size: 18px;
+    color: #86868b;
+    margin-bottom: 50px;
+    font-weight: 400;
+    animation: fadeInUp 0.8s ease 0.7s both;
+}
+
+/* 分析区块 */
+.analysis-section {
+    background: #f5f5f7;
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 30px;
+    text-align: left;
+    animation: fadeInUp 0.8s ease 1s both;
+}
+
+.analysis-section h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1d1d1f;
+}
+
+.analysis-text {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.8;
+    min-height: 60px;
+}
+
+.advantage-list {
+    list-style: none;
+    padding: 0;
+}
+
+.advantage-list li {
+    padding: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+    transition: opacity 0.3s ease;
+}
+
+.advantage-list li:last-child {
+    border-bottom: none;
+}
+
+.advantage-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #34c759;
+    font-weight: bold;
+}
+
+/* 最佳适配 */
+.match-section {
+    text-align: center;
+}
+
+.match-card {
+    display: inline-block;
+    padding: 20px 40px;
+    border: 2px solid #c0c0c0;
+    border-radius: 15px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.match-code {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1d1d1f;
+}
+
+.match-name {
+    font-size: 16px;
+    color: #86868b;
+}
+
+/* 按钮 */
+.action-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 50px;
+    animation: fadeInUp 0.8s ease 1.5s both;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: #1d1d1f;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    background: white;
+    color: #1d1d1f;
+    border: 2px solid #1d1d1f;
+}
+
+.btn-secondary:hover {
+    background: #f5f5f7;
+    transform: translateY(-2px);
+}
+
+/* ==================== 几何画像样式 ==================== */
+
+/* 1. 向上箭头 + 同心圆 - 婚育卷王 */
+.portrait-upward-arrow .arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 80px solid var(--primary-color);
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s ease infinite;
+}
+
+.portrait-upward-arrow .concentric-circles {
+    width: 120px;
+    height: 120px;
+    border: 4px solid var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-upward-arrow .concentric-circles::before {
+    content: '';
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* 2. 立方体 - 人间清醒孤寡王 */
+.portrait-cube .cube {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(45deg) rotateY(45deg);
+    transform-style: preserve-3d;
+    animation: rotateCube 8s linear infinite;
+    box-shadow: 20px 20px 0 var(--secondary-color);
+}
+
+.portrait-cube .shadow {
+    width: 100px;
+    height: 20px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: shadowPulse 2s ease infinite;
+}
+
+@keyframes rotateCube {
+    0% { transform: translate(-50%, -50%) rotateX(45deg) rotateY(0deg); }
+    100% { transform: translate(-50%, -50%) rotateX(45deg) rotateY(360deg); }
+}
+
+@keyframes shadowPulse {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.1; }
+    50% { transform: translateX(-50%) scale(1.2); opacity: 0.2; }
+}
+
+/* 3. 盾牌 + 十字 - 传统孝子冲锋员 */
+.portrait-shield .shield {
+    width: 100px;
+    height: 120px;
+    background: var(--primary-color);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-shield .cross {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-shield .cross::before,
+.portrait-shield .cross::after {
+    content: '';
+    position: absolute;
+    background: var(--secondary-color);
+}
+
+.portrait-shield .cross::before {
+    width: 20px;
+    height: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-shield .cross::after {
+    width: 60px;
+    height: 20px;
+    top: 20px;
+}
+
+/* 4. 心形 + 波浪 - 恋爱脑晚期患者 */
+.portrait-heart-wave .heart {
+    width: 80px;
+    height: 72px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: heartbeat 1.5s ease infinite;
+}
+
+.portrait-heart-wave .heart::before,
+.portrait-heart-wave .heart::after {
+    content: '';
+    width: 40px;
+    height: 64px;
+    background: var(--primary-color);
+    border-radius: 40px 40px 0 0;
+    position: absolute;
+}
+
+.portrait-heart-wave .heart::before {
+    left: 40px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.portrait-heart-wave .heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.portrait-heart-wave .wave {
+    width: 120px;
+    height: 40px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+.portrait-heart-wave .wave::before {
+    content: '〰️〰️〰️';
+    font-size: 30px;
+    color: var(--secondary-color);
+    position: absolute;
+    animation: waveMove 2s linear infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+}
+
+@keyframes waveMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-30px); }
+}
+
+/* 5. 面具 + 聚光灯 - 婚育表演艺术家 */
+.portrait-mask .mask {
+    width: 90px;
+    height: 100px;
+    background: var(--primary-color);
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-mask .mask::before,
+.portrait-mask .mask::after {
+    content: '';
+    width: 20px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+}
+
+.portrait-mask .mask::before { left: 20px; }
+.portrait-mask .mask::after { right: 20px; }
+
+.portrait-mask .spotlight {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 100px solid rgba(255,255,255,0.3);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: spotlight 3s ease infinite;
+}
+
+@keyframes spotlight {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+/* 6. 单一人形 - 精致利己独行者 */
+.portrait-single-figure .figure {
+    width: 60px;
+    height: 100px;
+    background: var(--primary-color);
+    border-radius: 30px 30px 20px 20px;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-single-figure .figure::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-single-figure .aura {
+    width: 140px;
+    height: 140px;
+    border: 2px dashed var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* 7. 围裙 + 婴儿 - 妈宝预备役 */
+.portrait-apron-baby .apron {
+    width: 80px;
+    height: 90px;
+    background: var(--primary-color);
+    border-radius: 40px 40px 20px 20px;
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-apron-baby .apron::before {
+    content: '';
+    width: 40px;
+    height: 50px;
+    background: var(--secondary-color);
+    border-radius: 20px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-apron-baby .baby {
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    animation: babyBounce 2s ease infinite;
+}
+
+.portrait-apron-baby .baby::before {
+    content: '👶';
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes babyBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 8. 躺平人形 - 被动摆烂等爱者 */
+.portrait-lying-figure .lying {
+    width: 100px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 20px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-lying-figure .lying::before {
+    content: '';
+    width: 35px;
+    height: 35px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: -25px;
+    left: 10px;
+}
+
+.portrait-lying-figure .zzz {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 24px;
+    color: var(--primary-color);
+    font-weight: bold;
+    animation: zzzFloat 3s ease infinite;
+}
+
+@keyframes zzzFloat {
+    0%, 100% { opacity: 0; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-20px); }
+}
+
+/* 9. 算盘 + 图表 - 理性生育计算器 */
+.portrait-calculator .calculator {
+    width: 80px;
+    height: 100px;
+    background: var(--primary-color);
+    border-radius: 10px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-calculator .calculator::before {
+    content: '';
+    width: 60px;
+    height: 60px;
+    background: var(--secondary-color);
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 8px,
+        rgba(255,255,255,0.3) 8px,
+        rgba(255,255,255,0.3) 10px
+    );
+}
+
+.portrait-calculator .chart {
+    width: 60px;
+    height: 40px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-calculator .chart::before {
+    content: '📊';
+    font-size: 35px;
+    position: absolute;
+    animation: chartGrow 2s ease infinite;
+}
+
+@keyframes chartGrow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* 10. 眼睛 + 圆环 - 人间观察员 */
+.portrait-eye-circle .eye {
+    width: 100px;
+    height: 50px;
+    background: white;
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+.portrait-eye-circle .eye::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: lookAround 4s ease infinite;
+}
+
+.portrait-eye-circle .circle-ring {
+    width: 160px;
+    height: 160px;
+    border: 3px solid var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.5;
+}
+
+@keyframes lookAround {
+    0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+    25% { transform: translate(-50%, -50%) translateX(-15px); }
+    75% { transform: translate(-50%, -50%) translateX(15px); }
+}
+
+/* 11. 玫瑰 + 荆棘 - 浪漫主义接盘侠 */
+.portrait-rose-thorn .rose {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-rose-thorn .rose::before {
+    content: '🌹';
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.portrait-rose-thorn .thorn {
+    width: 4px;
+    height: 80px;
+    background: var(--secondary-color);
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-rose-thorn .thorn::before,
+.portrait-rose-thorn .thorn::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 15px solid var(--secondary-color);
+    position: absolute;
+}
+
+.portrait-rose-thorn .thorn::before {
+    top: 20px;
+    left: 2px;
+}
+
+.portrait-rose-thorn .thorn::after {
+    top: 40px;
+    right: 2px;
+    transform: scaleX(-1);
+}
+
+/* 12. 齿轮 + 流水线 - 被动型生育机器 */
+.portrait-gear-assembly .gear1 {
+    width: 70px;
+    height: 70px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    animation: gearRotate 4s linear infinite;
+}
+
+.portrait-gear-assembly .gear2 {
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 90px;
+    right: 50px;
+    animation: gearRotateReverse 3s linear infinite;
+}
+
+.portrait-gear-assembly .gear1::before,
+.portrait-gear-assembly .gear2::before {
+    content: '⚙️';
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.portrait-gear-assembly .gear2::before {
+    font-size: 30px;
+}
+
+@keyframes gearRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes gearRotateReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+/* 13. 皇冠 + 心形 - 表演型慈母 */
+.portrait-crown-heart .crown {
+    width: 80px;
+    height: 50px;
+    background: var(--secondary-color);
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    clip-path: polygon(50% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+}
+
+.portrait-crown-heart .crown::before {
+    content: '👑';
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.portrait-crown-heart .heart-small {
+    width: 50px;
+    height: 45px;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: heartbeat 1.5s ease infinite;
+}
+
+.portrait-crown-heart .heart-small::before,
+.portrait-crown-heart .heart-small::after {
+    content: '';
+    width: 25px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 25px 25px 0 0;
+    position: absolute;
+}
+
+.portrait-crown-heart .heart-small::before {
+    left: 25px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.portrait-crown-heart .heart-small::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* 14. 大脑 + 心形 - 理性恋爱脑 */
+.portrait-brain-heart .brain {
+    width: 80px;
+    height: 70px;
+    background: var(--primary-color);
+    border-radius: 40px 40px 30px 30px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portrait-brain-heart .brain::before {
+    content: '🧠';
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.portrait-brain-heart .heart-overlay {
+    width: 40px;
+    height: 36px;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    animation: heartbeat 1.5s ease infinite;
+    opacity: 0.8;
+}
+
+.portrait-brain-heart .heart-overlay::before,
+.portrait-brain-heart .heart-overlay::after {
+    content: '';
+    width: 20px;
+    height: 32px;
+    background: var(--secondary-color);
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+}
+
+.portrait-brain-heart .heart-overlay::before {
+    left: 20px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.portrait-brain-heart .heart-overlay::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* 15. 独狼 + 月亮 - 理想主义独狼 */
+.portrait-wolf-moon .wolf {
+    width: 80px;
+    height: 80px;
+    background: var(--secondary-color);
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    clip-path: polygon(20% 100%, 0% 60%, 20% 40%, 40% 20%, 60% 40%, 80% 60%, 100% 100%);
+}
+
+.portrait-wolf-moon .wolf::before {
+    content: '🐺';
+    font-size: 50px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.portrait-wolf-moon .moon {
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: -15px 0 0 var(--primary-color);
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    animation: moonGlow 3s ease infinite;
+}
+
+@keyframes moonGlow {
+    0%, 100% { box-shadow: -15px 0 0 var(--primary-color); }
+    50% { box-shadow: -15px 0 0 var(--primary-color), 0 0 20px var(--primary-color); }
+}
+
+/* 16. 闪电 + 戒指 - 冲动型闪婚族 */
+.portrait-lightning-ring .lightning {
+    width: 40px;
+    height: 80px;
+    background: var(--primary-color);
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    clip-path: polygon(50% 0%, 100% 40%, 60% 40%, 80% 100%, 0% 60%, 40% 60%);
+    animation: lightningFlash 1s ease infinite;
+}
+
+.portrait-lightning-ring .ring {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: ringShine 2s ease infinite;
+}
+
+.portrait-lightning-ring .ring::before {
+    content: '💍';
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes lightningFlash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes ringShine {
+    0%, 100% { box-shadow: 0 0 0 transparent; }
+    50% { box-shadow: 0 0 20px var(--secondary-color); }
+}
+
+/* 默认圆形 */
+.portrait-default-circle {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 响应式适配 */
+@media (max-width: 600px) {
+    .personality-name {
+        font-size: 32px;
+    }
+
+    .personality-subtitle {
+        font-size: 16px;
+    }
+
+    .analysis-section {
+        padding: 25px;
+    }
+
+    .code-letter {
+        font-size: 36px;
+    }
+
+    .portrait-container {
+        width: 160px;
+        height: 160px;
+    }
+}

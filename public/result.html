@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你的婚育人格画像</title>
+    <link rel="stylesheet" href="css/result.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="result-container">
+        <!-- 人格代码展示 -->
+        <div class="code-display">
+            <span class="code-letter" id="code1">?</span>
+            <span class="code-letter" id="code2">?</span>
+            <span class="code-letter" id="code3">?</span>
+            <span class="code-letter" id="code4">?</span>
+        </div>
+
+        <!-- 几何画像 -->
+        <div class="portrait-container" id="portrait">
+            <!-- CSS几何图形将在这里动态生成 -->
+        </div>
+
+        <!-- 人格名称 -->
+        <h1 class="personality-name" id="personalityName">分析中...</h1>
+
+        <!-- 副标题 -->
+        <p class="personality-subtitle" id="personalitySubtitle">正在解读你的婚育观念...</p>
+
+        <!-- 性格画像 -->
+        <div class="analysis-section">
+            <h2>你的性格画像</h2>
+            <p class="analysis-text" id="personalityDesc"></p>
+        </div>
+
+        <!-- 婚恋优势 -->
+        <div class="analysis-section">
+            <h2>婚恋优势</h2>
+            <ul class="advantage-list" id="advantageList"></ul>
+        </div>
+
+        <!-- 成长建议 -->
+        <div class="analysis-section">
+            <h2>成长建议</h2>
+            <p class="analysis-text" id="growthAdvice"></p>
+        </div>
+
+        <!-- 最佳适配 -->
+        <div class="analysis-section match-section">
+            <h2>最佳适配</h2>
+            <div class="match-card" id="matchCard">
+                <span class="match-code" id="matchCode"></span>
+                <span class="match-name" id="matchName"></span>
+            </div>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="action-buttons">
+            <button class="btn-primary" onclick="window.location.href='/'">重新测试</button>
+            <button class="btn-secondary" onclick="shareResult()">分享结果</button>
+        </div>
+    </div>
+
+    <script>
+        // 16种人格数据
+        const personalityData = {
+            'RFCM': {
+                name: '婚育卷王',
+                subtitle: '别人恋爱你结婚，别人单身你二胎',
+                color: '#E63946',
+                secondaryColor: '#F1FAEE',
+                portrait: 'upward-arrow',
+                desc: '你是婚恋市场的"行动派"，多巴胺分泌模式偏向"完成目标型"。心理学家会说你有较强的"未来导向"特质，擅长延迟满足。从打卡恋爱到打卡结婚，每一个里程碑都能给你带来成就感。你的高效有时候会让周围人感到压力，但你自己乐在其中——毕竟，领先一步的感觉确实不错。',
+                advantages: ['执行力超强，承诺必兑现', '家庭责任感爆棚', '能平衡感性与理性'],
+                advice: '偶尔停下来问问自己：这么快，是真的幸福还是在打人生卡？给自己留点"无所事事"的恋爱时光，别让婚姻变成KPI。',
+                match: { code: 'rfcmAe', name: '被动型生育机器' }
+            },
+            'rfcM': {
+                name: '人间清醒孤寡王',
+                subtitle: '看透一切，所以单身至今',
+                color: '#1D3557',
+                secondaryColor: '#A8DADC',
+                portrait: 'cube',
+                desc: '你是亲密关系中的"哲学家"，很早就想明白了婚姻不是必需品。心理学上你有很高的"自我分化"水平——既能与人相处，又能保持独立。你不是不会爱，而是对爱有更高要求，宁缺毋滥。独处能力极强的你，一个人也能过得丰盛，这反而让你在关系中更有底气。',
+                advantages: ['不会被催婚焦虑绑架', '选择伴侣时理性清醒', '独处也能自得其乐'],
+                advice: '偶尔的脆弱不是软弱，允许自己依赖一下别人，也许会发现被照顾的感觉也不错。',
+                match: { code: 'RFCM', name: '婚育卷王' }
+            },
+            'RFcm': {
+                name: '传统孝子冲锋员',
+                subtitle: '为完成KPI而结婚，质检合格',
+                color: '#8B4513',
+                secondaryColor: '#FFD700',
+                portrait: 'shield',
+                desc: '你的婚姻观深受家庭文化影响，但这不意味着你是傀儡。心理学家会说你有很强的"家族认同"，将个人幸福与家庭延续结合得很好。你可能确实考虑了父母的期待，但最终走进婚姻是因为你也渴望这样的温暖。"家"是你安全感的来源，你的传统是选择，不是枷锁。',
+                advantages: ['出轨率极低', '擅长处理家族关系', '对子女教育有规划'],
+                advice: '确保你的幸福是真的幸福，不是任务完成。偶尔问问自己：如果没有父母的期待，我还会这样选择吗？',
+                match: { code: 'rfCm', name: '被动摆烂等爱者' }
+            },
+            'rfCM': {
+                name: '恋爱脑晚期患者',
+                subtitle: '爱情至上，面包是啥能吃吗',
+                color: '#FF69B4',
+                secondaryColor: '#DA70D6',
+                portrait: 'heart-wave',
+                desc: '恋爱时你的大脑会分泌超多多巴胺，"感觉对了"是最重要的决策标准。心理学家会说你有"浪漫依恋"倾向，相信真爱至上。虽然总被说"恋爱脑"，但你的情感深度和共情能力是很多人羡慕的。你能体验到文学作品里的极致爱情，虽然偶尔会被现实打脸，但你从不后悔曾经全情投入。',
+                advantages: ['恋爱体验感拉满', '共情能力极强', '为爱勇敢不计较得失'],
+                advice: '提前学习如何在平淡中经营关系，别让柴米油盐打败了当初的浪漫。爱情需要，面包也需要。',
+                match: { code: 'RfCM', name: '理性生育计算器' }
+            },
+            'RFCm': {
+                name: '婚育表演艺术家',
+                subtitle: '朋友圈恩爱冠军，私下各玩各',
+                color: '#FFB703',
+                secondaryColor: '#FFFFFF',
+                portrait: 'mask',
+                desc: '你很在意"别人眼中的我"，朋友圈的恩爱照片、完美的婚礼、体面的家庭生活，这些对你很重要。心理学家会说你有"印象管理"倾向，但这不是虚伪，而是你对美好生活的向往。有趣的是，表演久了，你往往会真的爱上这个角色。你的婚姻有很强的"作品感"，只是偶尔会累，因为完美主义是个无底洞。',
+                advantages: ['生活仪式感满满', '注重形象管理永远体面', '社交能力强'],
+                advice: '完美是敌，完成是朋友。允许婚姻有瑕疵，真实的不完美比虚假的完美更动人。',
+                match: { code: 'rFcm', name: '精致利己独行者' }
+            },
+            'rFcm': {
+                name: '精致利己独行者',
+                subtitle: '我的DNA不需要传承谢谢',
+                color: '#212529',
+                secondaryColor: '#ADB5BD',
+                portrait: 'single-figure',
+                desc: '你有极强的"自我边界感"，很清楚什么是"我的事"，什么是"别人的事"。心理学家会说你有高度的"自我分化"和"自主性"，不为他人期待买单。你把别人养娃的时间用来投资自己，往往在事业上很成功。你的"自私"其实是一种诚实——不假装想要孩子，也不为了结婚而结婚。',
+                advantages: ['一旦选择就是真爱', '经济独立不依附', '生活质量极高'],
+                advice: '独立是美德，但完全的孤岛也会寂寞。偶尔允许别人进入你的边界，分享的快乐也很美好。',
+                match: { code: 'RFCm', name: '婚育表演艺术家' }
+            },
+            'RFC': {
+                name: '妈宝预备役',
+                subtitle: '结婚是想找第二个妈照顾自己',
+                color: '#52B788',
+                secondaryColor: '#FFF3B0',
+                portrait: 'apron-baby',
+                desc: '你的依恋类型偏向"焦虑型"，渴望亲密和被照顾。心理学家会说你在寻找"理想化父母"的替代者，希望伴侣能弥补童年未被满足的需求。这听起来负面，但其实你有一颗很柔软的心，只是还没学会自己照顾自己。只要找到愿意宠你的人，也能过得不错。关键是：成长永远都不晚。',
+                advantages: ['撒娇能力满分', '情感需求明确不猜', '对家庭依赖强很忠诚'],
+                advice: '长大是一辈子的功课。学着自己做决定，哪怕从小事开始，你会发现自己比想象中强大。',
+                match: { code: 'rFC', name: '理性恋爱脑' }
+            },
+            'rfCm': {
+                name: '被动摆烂等爱者',
+                subtitle: '等国家分配对象中，勿扰',
+                color: '#87CEEB',
+                secondaryColor: '#F0F8FF',
+                portrait: 'lying-figure',
+                desc: '你的哲学是"命里有时终须有"，很少主动争取什么，但奇怪的是好事往往也会落在你头上。心理学家会说你有"外控型"人格特质，相信缘分和命运。你的佛系不是消极，而是一种对生活的信任——该来的总会来。这种心态让你很少焦虑，但有时候也会错过本该争取的机会。',
+                advantages: ['心态稳如老狗', '不患得患失', '让人相处轻松'],
+                advice: '偶尔主动一下，命运也喜欢勇敢的人。缘分天注定，但机会也要自己把握。',
+                match: { code: 'RFcm', name: '传统孝子冲锋员' }
+            },
+            'RfCM': {
+                name: '理性生育计算器',
+                subtitle: '生娃ROI分析完毕，符合预期',
+                color: '#F4A261',
+                secondaryColor: '#8B4513',
+                portrait: 'calculator',
+                desc: '你做任何决定都要先算一笔账，包括结婚和生娃。心理学家会说你有很强的"工具理性"，善于权衡利弊。你不是没有感情，而是认为感情需要现实基础支撑。你的婚姻往往是深思熟虑的结果，离婚率很低，因为你在婚前就想清楚了。只是有时候，过度计算会让你错过一些"不划算"但美好的体验。',
+                advantages: ['婚姻稳定性极高', '财务规划能力强', '不容易冲动决策'],
+                advice: '不是所有事情都能量化，有时候跟着感觉走也挺好。爱情不只是投资回报率。',
+                match: { code: 'rfCM', name: '恋爱脑晚期患者' }
+            },
+            'rfc': {
+                name: '人间观察员',
+                subtitle: '看别人恋爱比自己谈有意思',
+                color: '#6C5B7B',
+                secondaryColor: '#C06C84',
+                portrait: 'eye-circle',
+                desc: '你是情感世界的"人类学家"，喜欢观察别人的婚恋故事，从中获得乐趣。心理学家会说你有"回避型依恋"的倾向，但更像是选择了一种独特的生活方式。你对亲密关系保持好奇但不沉溺，像看电影一样看着别人的悲欢离合。这种距离感让你很少受伤，但也可能让你错过亲身参与的深刻体验。',
+                advantages: ['情绪稳定', '给朋友建议很中肯', '不会被感情冲昏头脑'],
+                advice: '观察再久也不如亲身体验一次，哪怕会受伤。电影再精彩，也比不过自己的人生。',
+                match: { code: 'Rfcm', name: '浪漫主义接盘侠' }
+            },
+            'Rfcm': {
+                name: '浪漫主义接盘侠',
+                subtitle: '满怀憧憬结婚，发现是爱情坟墓',
+                color: '#9B5DE5',
+                secondaryColor: '#F15BB5',
+                portrait: 'rose-thorn',
+                desc: '你对婚姻有很高的期待，相信"从此幸福快乐"的结局。心理学家会说你有"理想化投射"的倾向，容易把伴侣想象成完美对象。当现实与理想出现落差时，你会感到特别失望。但这种浪漫情怀本身没有错，只是需要学会区分幻想和现实。你的真诚和热情是珍贵的，只是需要找一个同样认真的人。',
+                advantages: ['对婚姻充满热情', '愿意为爱付出', '情感真挚纯粹'],
+                advice: '接受婚姻有不完美，真正的爱是接纳对方的全部。童话 ending 之后才是真实生活的开始。',
+                match: { code: 'rfc', name: '人间观察员' }
+            },
+            'rfC': {
+                name: '被动型生育机器',
+                subtitle: '被催着结婚，被催着生娃，工具人',
+                color: '#6C757D',
+                secondaryColor: '#ADB5BD',
+                portrait: 'gear-assembly',
+                desc: '你的人生节奏好像总是比别人慢半拍，然后被推着走。心理学家会说你有"被动顺从"的倾向，不太会拒绝别人的期待。但这不意味着你不幸福——有时候被安排好的路，走起来也很舒服。你的适应性很强，能把别人眼中的"被迫"变成自己的"选择"。只是偶尔会想：如果我自己选，会选什么？',
+                advantages: ['配合度高家庭和睦', '很少与长辈冲突', '适应性强随遇而安'],
+                advice: '哪怕只是小事，也要试着说"我想..."。你的人生，你才是主角。',
+                match: { code: 'RFCM', name: '婚育卷王' }
+            },
+            'RFC': {
+                name: '表演型慈母',
+                subtitle: '朋友圈晒娃狂魔，私下后悔生娃',
+                color: '#FFC8DD',
+                secondaryColor: '#FFE5EC',
+                portrait: 'crown-heart',
+                desc: '你是"完美母亲"人设的践行者，朋友圈里的你永远是温柔耐心的好妈妈。心理学家会说你有"社会角色过度认同"的倾向，把"母亲"这个身份看得太重。但人设背后的疲惫只有你自己知道。这种分裂感会让你焦虑，但也推动你成为更好的妈妈。关键是找到真实的自我和角色之间的平衡。',
+                advantages: ['对孩子投入多', '教育用心', '孩子通常很优秀'],
+                advice: '不需要做满分妈妈，60分妈妈也能养出100分孩子。真实的你比完美人设更可爱。',
+                match: { code: 'rFcm', name: '精致利己独行者' }
+            },
+            'rFC': {
+                name: '理性恋爱脑',
+                subtitle: '一边算账一边心动，精神分裂',
+                color: '#457B9D',
+                secondaryColor: '#FFC8DD',
+                portrait: 'brain-heart',
+                desc: '你的大脑里好像住着两个人：一个在大声算账，一个在悄悄心动。心理学家会说你有"认知失调"的倾向，理性和感性经常打架。这种矛盾让你很痛苦，但也让你比别人想得更全面。你既能享受爱情的甜蜜，又能保持必要的清醒。只是有时候，这种拉扯会让你犹豫不决，错过最佳时机。',
+                advantages: ['既有感性温度又有理性底线', '关系经营得很平衡', '想得很全面'],
+                advice: '不用每次都做出完美决策，跟着当下的感觉走。鱼和熊掌可以兼得，只是时间问题。',
+                match: { code: 'RFC', name: '妈宝预备役' }
+            },
+            'Rfc': {
+                name: '理想主义独狼',
+                subtitle: '想要完美爱情，宁缺毋滥到老',
+                color: '#A8DADC',
+                secondaryColor: '#212529',
+                portrait: 'wolf-moon',
+                desc: '你对爱情有极高的标准，不愿意妥协。心理学家会说你有"完美主义倾向"和"高回避型依恋"，宁可孤独也不要将就。你的理想主义让你成为朋友圈里的"爱情理论家"，说起来头头是道，但实践为零。这种坚持本身很酷，只是要警惕：完美的伴侣不存在，合适的人需要磨合。',
+                advantages: ['一旦选择就是深思熟虑', '关系质量通常很高', '不将就对自己负责'],
+                advice: '80分的人比100分的幻影更真实。完美是方向，不是标准。',
+                match: { code: 'RfCM', name: '理性生育计算器' }
+            },
+            'rfC': {
+                name: '冲动型闪婚族',
+                subtitle: '三天确定关系，三月结婚，三年离婚',
+                color: '#FFD60A',
+                secondaryColor: '#E63946',
+                portrait: 'lightning-ring',
+                desc: '你的多巴胺分泌模式是"爆发型"，一见钟情后能迅速做出重大决定。心理学家会说你有"感觉寻求"特质，喜欢新鲜刺激，但也容易后悔。你的感情总是来得快去得也快，民政局可能是你的常客。但这种敢爱敢恨的勇气，也是很多人羡慕不来的。关键是学会在冲动和理智之间找到暂停键。',
+                advantages: ['敢爱敢恨不拖泥带水', '每次恋爱都是全情投入', '勇气可嘉'],
+                advice: '重大决定前给自己设个"冷静期"，三天后再说。激情很美好，但持久的爱需要经营。',
+                match: { code: 'RfCM', name: '理性生育计算器' }
+            }
+        };
+
+        // 分析人格
+        function analyzePersonality() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const data = {};
+
+            // 从URL参数获取答案
+            for (const [key, value] of urlParams) {
+                data[key] = value;
+            }
+
+            // 四维分析
+            const R = ['是，人生必须结婚', '最好是，但不强求', '恋爱中，未婚'].includes(data.marriage_necessity) ||
+                      ['恋爱中，未婚', '已婚'].includes(data.relationship_status) ? 'R' : 'r';
+
+            const F = ['应该长期同住', '短期过渡可以'].includes(data.live_with_parents) ||
+                      ['家庭优先', '尽量兼顾'].includes(data.career_family) ? 'F' : 'f';
+
+            const C = ['有明确意愿', '比较想要'].includes(data.fertility_willingness) ||
+                      ['两个', '三个及以上'].includes(data.children_num) ? 'C' : 'c';
+
+            const M = ['经济压力', '收入水平', '住房成本'].some(factor =>
+                      (data.factors || '').includes(factor)) ||
+                      ['压力很大', '有一定压力'].includes(data.marriage_customs) ? 'M' : 'm';
+
+            const code = R + F + C + M;
+
+            // 获取人格数据
+            const personality = personalityData[code] || personalityData['RFCM'];
+
+            // 显示结果
+            displayResult(code, personality);
+        }
+
+        // 显示结果
+        function displayResult(code, personality) {
+            // 动画显示代码
+            const letters = code.split('');
+            letters.forEach((letter, index) => {
+                setTimeout(() => {
+                    document.getElementById(`code${index + 1}`).textContent = letter;
+                    document.getElementById(`code${index + 1}`).style.color = personality.color;
+                }, index * 300);
+            });
+
+            // 生成几何画像
+            generatePortrait(personality.portrait, personality.color, personality.secondaryColor);
+
+            // 显示文字内容（带打字机效果）
+            setTimeout(() => {
+                document.getElementById('personalityName').textContent = personality.name;
+                document.getElementById('personalityName').style.color = personality.color;
+                document.getElementById('personalitySubtitle').textContent = personality.subtitle;
+
+                typeWriter('personalityDesc', personality.desc);
+
+                // 优势列表
+                const advList = document.getElementById('advantageList');
+                personality.advantages.forEach((adv, i) => {
+                    setTimeout(() => {
+                        const li = document.createElement('li');
+                        li.textContent = adv;
+                        li.style.opacity = '0';
+                        advList.appendChild(li);
+                        setTimeout(() => li.style.opacity = '1', 50);
+                    }, 1500 + i * 200);
+                });
+
+                // 成长建议
+                setTimeout(() => {
+                    typeWriter('growthAdvice', personality.advice);
+                }, 2500);
+
+                // 最佳适配
+                setTimeout(() => {
+                    document.getElementById('matchCode').textContent = personality.match.code;
+                    document.getElementById('matchName').textContent = personality.match.name;
+                    document.getElementById('matchCard').style.borderColor = personality.color;
+                }, 3500);
+            }, 1500);
+        }
+
+        // 生成几何画像
+        function generatePortrait(type, color, secondaryColor) {
+            const container = document.getElementById('portrait');
+            container.innerHTML = '';
+            container.style.setProperty('--primary-color', color);
+            container.style.setProperty('--secondary-color', secondaryColor);
+
+            const portraitDiv = document.createElement('div');
+            portraitDiv.className = `geometric-portrait portrait-${type}`;
+
+            // 根据不同的类型创建不同的几何图形
+            switch(type) {
+                case 'upward-arrow':
+                    portraitDiv.innerHTML = `
+                        <div class="arrow-up"></div>
+                        <div class="concentric-circles"></div>
+                    `;
+                    break;
+                case 'cube':
+                    portraitDiv.innerHTML = `
+                        <div class="cube"></div>
+                        <div class="shadow"></div>
+                    `;
+                    break;
+                case 'shield':
+                    portraitDiv.innerHTML = `
+                        <div class="shield"></div>
+                        <div class="cross"></div>
+                    `;
+                    break;
+                case 'heart-wave':
+                    portraitDiv.innerHTML = `
+                        <div class="heart"></div>
+                        <div class="wave"></div>
+                    `;
+                    break;
+                case 'mask':
+                    portraitDiv.innerHTML = `
+                        <div class="mask"></div>
+                        <div class="spotlight"></div>
+                    `;
+                    break;
+                case 'single-figure':
+                    portraitDiv.innerHTML = `
+                        <div class="figure"></div>
+                        <div class="aura"></div>
+                    `;
+                    break;
+                case 'apron-baby':
+                    portraitDiv.innerHTML = `
+                        <div class="apron"></div>
+                        <div class="baby"></div>
+                    `;
+                    break;
+                case 'lying-figure':
+                    portraitDiv.innerHTML = `
+                        <div class="lying"></div>
+                        <div class="zzz"></div>
+                    `;
+                    break;
+                case 'calculator':
+                    portraitDiv.innerHTML = `
+                        <div class="calculator"></div>
+                        <div class="chart"></div>
+                    `;
+                    break;
+                case 'eye-circle':
+                    portraitDiv.innerHTML = `
+                        <div class="eye"></div>
+                        <div class="circle-ring"></div>
+                    `;
+                    break;
+                case 'rose-thorn':
+                    portraitDiv.innerHTML = `
+                        <div class="rose"></div>
+                        <div class="thorn"></div>
+                    `;
+                    break;
+                case 'gear-assembly':
+                    portraitDiv.innerHTML = `
+                        <div class="gear gear1"></div>
+                        <div class="gear gear2"></div>
+                    `;
+                    break;
+                case 'crown-heart':
+                    portraitDiv.innerHTML = `
+                        <div class="crown"></div>
+                        <div class="heart-small"></div>
+                    `;
+                    break;
+                case 'brain-heart':
+                    portraitDiv.innerHTML = `
+                        <div class="brain"></div>
+                        <div class="heart-overlay"></div>
+                    `;
+                    break;
+                case 'wolf-moon':
+                    portraitDiv.innerHTML = `
+                        <div class="wolf"></div>
+                        <div class="moon"></div>
+                    `;
+                    break;
+                case 'lightning-ring':
+                    portraitDiv.innerHTML = `
+                        <div class="lightning"></div>
+                        <div class="ring"></div>
+                    `;
+                    break;
+                default:
+                    portraitDiv.innerHTML = `<div class="default-circle"></div>`;
+            }
+
+            container.appendChild(portraitDiv);
+        }
+
+        // 打字机效果
+        function typeWriter(elementId, text) {
+            const element = document.getElementById(elementId);
+            element.textContent = '';
+            let i = 0;
+            const speed = 30;
+
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // 分享结果
+        function shareResult() {
+            const name = document.getElementById('personalityName').textContent;
+            const subtitle = document.getElementById('personalitySubtitle').textContent;
+            const text = `我的婚育人格是【${name}】\n${subtitle}\n\n快来测试你的婚育人格吧！`;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: '我的婚育人格',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                // 复制到剪贴板
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('结果已复制到剪贴板！');
+                });
+            }
+        }
+
+        // 页面加载后分析
+        window.onload = analyzePersonality;
+    </script>
+</body>
+</html>

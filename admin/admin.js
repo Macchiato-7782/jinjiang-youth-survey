@@ -48,6 +48,12 @@ async function loadAllData() {
         const statsData = await statsRes.json();
         if (statsData.success) {
             allStatistics = statsData.data;
+            // 加载晋江身份分布
+            const jinjiangRes = await fetch('/api/statistics/jinjiang-type');
+            const jinjiangData = await jinjiangRes.json();
+            if (jinjiangData.success) {
+                allStatistics.jinjiang_type = jinjiangData.data;
+            }
             renderAllCharts();
         }
 
@@ -111,6 +117,9 @@ function renderAllCharts() {
     renderHorizontalBarChart('factorsChart', allStatistics.factors, '影响因素');
     renderPieChart('jinjiangFeatureChart', allStatistics.jinjiang_feature, '地域特色影响');
     renderHorizontalBarChart('policySuggestionChart', allStatistics.policy_suggestion, '政策建议');
+
+    // 晋江身份分布
+    renderPieChart('jinjiangTypeChart', allStatistics.jinjiang_type, '晋江身份分布');
 }
 
 // 渲染趋势图

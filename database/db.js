@@ -32,6 +32,9 @@ function initTables() {
             user_agent TEXT,
             completion_time INTEGER,
 
+            -- 晋江身份标识
+            jinjiang_type TEXT,
+
             -- 基本信息 (6题)
             gender TEXT,
             age TEXT,
@@ -92,12 +95,13 @@ const dbOperations = {
         const sql = `
             INSERT INTO survey_responses (
                 response_id, ip_address, user_agent, completion_time,
+                jinjiang_type,
                 gender, age, education, occupation, income, housing,
                 relationship_status, meet_channel, mate_priority, long_distance,
                 marriage_necessity, ideal_marriage_age, cohabitation, marriage_customs, marriage_factor,
                 fertility_willingness, children_num, gender_preference, fertility_concern, three_child_policy,
                 live_with_parents, housework, career_family, factors, jinjiang_feature, policy_suggestion, other_suggestions
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
         const params = [
@@ -105,6 +109,7 @@ const dbOperations = {
             data.ip_address,
             data.user_agent,
             data.completion_time,
+            data.jinjiang_type,
             data.gender,
             data.age,
             data.education,
@@ -196,6 +201,24 @@ const dbOperations = {
 
             callback(null, result);
         });
+    },
+
+    // 分区统计 - 获取晋江本地/工作/其他的统计
+    getJinjiangDistribution: (callback) => {
+        const sql = `
+            SELECT
+                CASE
+                    WHEN jinjiang_type = 'local' THEN '晋江本地'
+                    WHEN jinjiang_type = 'working' THEN '在晋江工作/学习'
+                    WHEN jinjiang_type = 'other' THEN '其他地区'
+                    ELSE '未填写'
+                END as value,
+                COUNT(*) as count
+            FROM survey_responses
+            GROUP BY jinjiang_type
+            ORDER BY count DESC
+        `;
+        db.all(sql, [], callback);
     },
 
     // 交叉分析

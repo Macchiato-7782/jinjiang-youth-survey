@@ -194,6 +194,14 @@ app.delete('/api/responses/:id', (req, res) => {
     });
 });
 
+// 获取晋江身份分布
+app.get('/api/statistics/jinjiang-type', (req, res) => {
+    db.getJinjiangDistribution((err, data) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ success: true, data });
+    });
+});
+
 // 首页重定向到问卷
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));

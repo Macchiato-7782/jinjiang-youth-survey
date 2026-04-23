@@ -213,9 +213,13 @@ function initFormSubmit() {
             const result = await response.json();
 
             if (result.success) {
-                showSuccessModal();
-                this.reset();
-                resetForm();
+                // 构建结果页URL参数
+                const params = new URLSearchParams();
+                for (let [key, value] of Object.entries(data)) {
+                    params.append(key, value);
+                }
+                // 跳转到结果页
+                window.location.href = '/result.html?' + params.toString();
             } else {
                 showToast('提交失败：' + result.message);
             }
