@@ -96,8 +96,8 @@ npm run dev
 ```
 
 4. 访问系统
-- 问卷地址: http://localhost:3000
-- 后台管理: http://localhost:3000/admin
+- 问卷地址: http://124.222.163.91:3000
+- 后台管理: http://localhost:3000/admin（本地）
 
 ### 数据导出
 
